@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:poke_api/core/utils/constants/poke_constants.dart';
+import 'package:poke_api/core/utils/extensions/string_extensions.dart';
+
 part 'simple_pokemon.freezed.dart';
 
 @freezed
@@ -17,7 +19,7 @@ class SimplePokemon with _$SimplePokemon {
     final pokemonNumber = urlStrings.elementAt(urlStrings.length - 2);
     final number = int.parse(pokemonNumber);
 
-    final name = json['name'];
+    final name = (json['name'] as String).toCapitalized();
 
     final spriteUrl = '${PokeConstants.spriteBaseUrl}$pokemonNumber.png';
 
